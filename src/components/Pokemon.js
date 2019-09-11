@@ -15,6 +15,7 @@ const Pokemon = props => {
           );
         })}
       </ul>
+      {props.evolution && <div className="card__evolution">{props.evolution}</div>}
     </div> 
   );
 };
@@ -22,6 +23,7 @@ const Pokemon = props => {
 Pokemon.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  evolution: PropTypes.string,
   types: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 

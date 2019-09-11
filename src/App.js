@@ -1,14 +1,9 @@
 import React from 'react';
-import Pokemon from './components/Pokemon';
+import PokeList from './components/PokeList';
 
 import './App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: [
+const dataPokemons = [
               {
                 id: 1,
                 name: 'bulbasaur',
@@ -89,27 +84,33 @@ class App extends React.Component {
                 url:
                   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png',
               },
-            ]
-    }
+            ];
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    };
+
+    this.handlePokemon = this.handlePokemon.bind(this);
+  }
+
+  handlePokemon() {
+    this.setState({
+      data: dataPokemons
+    });
   }
 
   render() {
     return (
       <div className="app">
         <h1 className="app__title">Mi lista de Pokemon</h1>
-        <ol className="pokemons">
-          {this.state.data.map(item =>{
-            return (
-              <li className="pokemon" key={item.id}>
-                <Pokemon
-                  name={item.name}
-                  url={item.url}
-                  types={item.types}
-                /> 
-              </li>
-            );
-          })}
-        </ol>
+        <PokeList 
+          data={this.state.data}
+        />
       </div>
     );
   }
