@@ -1,4 +1,5 @@
 import React from 'react';
+import Pokemon from './components/Pokemon';
 
 import './App.css';
 
@@ -100,19 +101,11 @@ class App extends React.Component {
           {this.state.data.map(item =>{
             return (
               <li className="pokemon" key={item.id}>
-                <div className="card">
-                  <h2 className="card__name">{item.name}</h2>
-                  <img src={item.url} alt={item.name} className="card__img" />
-                  <ul className="card__types">
-                    {item.types.map((type, index) => {
-                      return (
-                        <li className="card__type" key={index}>
-                          <div className="card__type-item">{type}</div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>  
+                <Pokemon
+                  name={item.name}
+                  url={item.url}
+                  types={item.types}
+                /> 
               </li>
             );
           })}
